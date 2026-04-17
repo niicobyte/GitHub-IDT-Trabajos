@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de formularios</title>
+</head>
+<body>
+    <h2>Ejercicio 1</h2>
+    <form action="data.php" method="post" style="margin-bottom: 50px;">
+        <label for="name">Usuario:</label>
+        <input type="text" id="name" name="name_users" required><br><br>
+        <label for="email">Email:*</label>
+        <input type="email" id="email" name="email_users" required><br><br>
+        <label for="pass">Contraseña:</label>
+        <input type="password" id="pass" name="pass_users" required><br><br>
+        <label for="pass_confirm">Vuelve a escribir la contraseña:</label>
+        <input type="password" id="pass_confirm" name="pass_confirm_users" required><br><br>
+        <input type="radio" id="smartphone" name="device" value="smartphone">
+        <label for="smartphone">Smartphone</label><br>
+        <input type="radio" id="notebook" name="device" value="notebook">
+        <label for="notebook">Notebook</label><br><br>
+        <input type="submit" value="Aceptar">
+        <input type="reset" value="Borrar todo">
+    </form>
+    <h2>Ejercicio 2</h2>
+    <form action="data.php" method="post" style="margin-bottom: 50px;">
+        <input type="checkbox" id="terms" name="terms" value="accepted" required>
+        <label for="terms">Acepto los términos y condiciones</label><br><br>
+        <input type="checkbox" id="newsletter" name="newsletter" value="subscribed">
+        <label for="newsletter">Suscribirme al boletín</label><br><br>
+        <input type="checkbox" id="updates" name="updates" value="accepted">
+        <label for="updates">Acepto recibir actualizaciones</label><br><br>
+        <input type="checkbox" id="offers" name="offers" value="accepted">
+        <label for="offers">Acepto recibir ofertas</label><br><br>
+        <input type="checkbox" id="privacy" name="privacy" value="accepted">
+        <label for="privacy" aria-relevant="all">Acepto la política de privacidad</label><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+    <h2>Ejercicio 3</h2>
+    <form action="data.php" method="post" style="margin-bottom: 50px;">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre_users" required><br><br>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido_users" required><br><br>
+        <label for="email">Email:</label>   
+        <input type="email" id="email" name="email_users" required><br><br>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono_users" required><br><br>
+        <label for="mensaje">Mensaje:</label><br>
+        <textarea id="mensaje" name="mensaje_users" rows="4" cols="30" required></textarea><br><br>
+        <input type="button" value="Enviar" onclick="this.form.submit()">
+        <input type="button" value="Limpiar" onclick="this.form.reset()">
+        <input type="button" value="Salir" onclick="window.close()">
+    </form>
+    <style>
+        input[type="text"], input[type="email"], input[type="password"], textarea, button 
+         {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Arial, Helvetica, sans-serif;
+         }
+        h2 
+         {text-align: center;
+            color: #333;
+            font-family: Arial, Helvetica, sans-serif
+        }
+    form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5%;
+            background-color: #f9f9f9;
+            font-family: Arial, Helvetica, sans-serif;
+         }
+    label {
+            display: block;
+            margin-bottom: 5px;
+          }
+    </style>
+</body>
+</html>

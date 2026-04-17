@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+}
+
+article{
+    float: left;
+    width: 50%;
+}
+
+body{
+    background: #c3e5f9;
+    color: white;
+    font-size: 16px;
+    text-shadow: 1px 1px 0px black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section{
+    background: #12a89d;
+    overflow: hidden;
+    text-align: center;
+    width: 1000px;
+    margin: 10px 0px;
+    padding: 10px 0px;
+}
+
+.fila1 {
+    background: #b30f2a;
+}
+
+.fila2 {
+    background: #1c4583;
+}
+
+@media screen and (max-width: 1000px) {
+    .section {
+        width: 100%;
+}
+}
+
+@media screen and (max-width: 700px) {
+    .article {
+        width: 100%;
+    }
+    
+}

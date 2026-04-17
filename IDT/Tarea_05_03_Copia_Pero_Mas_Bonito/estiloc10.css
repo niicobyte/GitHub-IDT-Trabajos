@@ -1,0 +1,98 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+}
+.top-bar{
+    background: #97908a;
+    color: #ffffff;
+    padding: 20px 0;
+}
+.top-bar .title{
+    margin-left: 20px;
+    font-size: 2em;
+}
+#menu{
+    width: 940px;
+    margin: 10px auto 0 auto;
+    background: #4d4c4a;
+}
+#menu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#menu ul li{
+    float: left;
+}
+#menu ul li a{
+    display: block;
+    padding: 10px 20px;
+    color: #ffffff;
+    text-decoration: none;
+}
+#menu ul li.active a,
+#menu ul li a:hover{
+    background: #000000;
+    color: #ffffff;
+}
+.banner{
+    background: #7a756f;
+    text-align: center;
+    padding: 20px 0;
+}
+.banner img{
+    width: 100%;
+    max-width: 940px;
+    height: auto;
+}
+.main-content{
+    width: 940px;
+    margin: 0 auto;
+}
+.left-sidebar{
+    width: 240px;
+    float: left;
+    margin: 0;
+    padding: 0px 30px 30px 0px;
+    background: #e0e0e0;
+}
+.right-posts{
+    width: 640px;
+    float: right;
+}
+.post{
+    margin: 0 0 30px 0;
+    border-bottom: 1px solid #CCCCCC;
+}
+.post h3{
+    padding: 4px 35px 4px 15px;
+    background: #000000;
+    font-weight: normal;
+    color: #FFFFFF;
+    margin:0;
+}
+.post p{
+    padding: 20px 0px;
+    margin:0;
+}
+.post .comments{
+    color: #7EBA25;
+    text-decoration: underline;
+}
+.post .comments:hover{
+    text-decoration: none;
+}
+footer{
+    margin: 0 auto;
+    padding: 20px 0px;
+    background: #000000;
+    color: #686767;
+    text-align: center;
+}
+.clearfix::after{
+    content: "";
+    display: table;
+    clear: both;
+}

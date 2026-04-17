@@ -1,0 +1,166 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header {
+    background-color: #3fc6f3;
+    padding: 20px;
+    color: white;
+}
+
+#header p {
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#subheader {
+    background-color: #33B4DE;
+    padding: 10px 20px;
+    color: white;
+    font-size: 18px;
+}
+
+#subheader a {
+    margin: 0 0 0 480px;
+    text-decoration: none;
+    color: white;
+}
+
+
+#menu {
+    background-color: black;
+    padding: 10px 0;;
+}
+
+#menu ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 500px;
+}
+
+#menu li {
+    margin: 0;
+    padding: 0;
+}
+
+#menu a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: text-decoration 0.3s ease;
+}
+
+#menu a:hover {
+    text-decoration: underline;
+    text-decoration-color: white;
+    text-decoration-thickness: 2px;
+}
+
+#menu li.current_page_item a {
+    background-color: #f7e031;
+    height: 20px;
+    color: #FFFFFF;
+    padding: 10px 20px; 
+}
+
+
+#container {
+    width: 920px;
+    margin: 40px auto;
+    overflow: auto;
+}
+
+
+#sidebar {
+    width: 177px;
+    float: left;
+    padding-left: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #585D60;
+}
+
+#sidebar h2 {
+    height: 26px;
+    margin: 0 0 10px 0px;
+    padding: 12px 0 2px 7px;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: normal;
+    color: #464F54;
+}
+
+#sidebar p {
+    margin: 0;
+    padding: 0px 10px;
+    line-height: 200%;
+}
+
+#sidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: normal;
+}
+
+#sidebar ul li {
+    margin: 0;
+    padding: 7px 10px 10px 7px;
+    border-bottom: 1px dotted #83878c;
+}
+
+#sidebar ul li a {
+    text-align: left;
+    text-decoration: none;
+    font-weight: normal;
+    color: #585D60;
+}
+
+#sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+
+#content {
+    width: 658px;
+    float: right;
+}
+
+
+.post {
+    border-bottom: 1px dotted #83878c;
+    margin-bottom: 25px;
+}
+
+.post h3 {
+    height: 30px;
+    color: #549900;
+    display: flex;
+    align-items: center;
+}
+
+.post h3 a {
+    text-decoration: none;
+    color: #585D60;
+}
+
+.post h3 a:hover {
+    text-decoration: underline;
+}
+
+.post p {
+    padding: 10px 0;
+    color: #585D60;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}

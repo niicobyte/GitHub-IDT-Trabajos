@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación - Ejercicio 1</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h2 {
+            animation-duration: 2.5s;
+            animation-name: slidein;
+            color: #ffffff;
+            font-size: 2.5em;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            margin: 30px 0 20px 0;
+            letter-spacing: 1px;
+        }
+
+        p {
+            animation-duration: 3s;
+            animation-name: slidein;
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+            color: #2c3e50;
+            padding: 25px;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 500;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            border-left: 5px solid #ee5a6f;
+        }
+        
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        @keyframes slidein {
+            from {
+                margin-left: 100%;
+                width: 300%;
+            }
+
+            to {
+                margin-left: 0%;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Ejercicio de Animación 1</h2>
+    <p>Este es una prueba de animación sencilla. Me gusta mucho es como para un anuncio, o como para poner algo nuevo o ofertas del dia o incluso promociones especiales.</p>
+    <p><a href="animaciones-ejercicio2.html">Ir al siguiente ejercicio 2</a></p>
+</body>
+</html>
