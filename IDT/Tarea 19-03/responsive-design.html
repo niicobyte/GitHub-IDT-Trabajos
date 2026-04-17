@@ -27,10 +27,31 @@
                 background-color: green;
             }
         }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
         
     </style>
 </head>
 <body>
+    <div style="text-align: center; padding: 20px;">
+        <a href="../../menu-trabajos.html" class="back-button">⬅ Volver a Menú</a>
+    </div>
     <div class="container">
     </div> 
 </body>
