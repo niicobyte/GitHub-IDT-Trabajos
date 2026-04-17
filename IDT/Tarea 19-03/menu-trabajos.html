@@ -43,6 +43,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
+            animation: slideInCard 0.8s ease-out;
         }
         .menu-card:hover {
             transform: translateY(-10px);
@@ -73,6 +74,18 @@
             display: block;
             font-size: 0.95rem;
         }
+        @keyframes slideInCard {
+            from {
+                margin-left: 100%;
+                width: 300%;
+                opacity: 0;
+            }
+            to {
+                margin-left: 0%;
+                width: 100%;
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -84,49 +97,49 @@
         
         <div class="menu-grid">
             <div class="menu-card">
-                <a href="Tarea 19-03/animaciones-ejercicio2.html">
+                <a href="animaciones-ejercicio2.html">
                     <span class="menu-icon">✨</span>
                     <span class="menu-text">Animaciones - Ejercicio 2</span>
                 </a>
             </div>
             
             <div class="menu-card">
-                <a href="Tarea 19-03/animaciones-inicio.html">
+                <a href="animaciones-inicio.html">
                     <span class="menu-icon">🎬</span>
                     <span class="menu-text">Animaciones - Inicio</span>
                 </a>
             </div>
             
             <div class="menu-card">
-                <a href="Tarea 19-03/animaciones-ejercicio3.html">
+                <a href="animaciones-ejercicio3.html">
                     <span class="menu-icon">🚀</span>
                     <span class="menu-text">Animaciones - Ejercicio 3</span>
                 </a>
             </div>
             
             <div class="menu-card">
-                <a href="Tarea 19-03/categorias-inicio.html">
+                <a href="categorias-inicio.html">
                     <span class="menu-icon">📂</span>
                     <span class="menu-text">Categorías - Inicio</span>
                 </a>
             </div>
             
             <div class="menu-card">
-                <a href="Tarea 19-03/flores-inicio.html">
+                <a href="flores-inicio.html">
                     <span class="menu-icon">🌸</span>
                     <span class="menu-text">Flores - Inicio</span>
                 </a>
             </div>
             
             <div class="menu-card">
-                <a href="Tarea 19-03/responsive-design-2.html">
+                <a href="responsive-design-2.html">
                     <span class="menu-icon">📱</span>
                     <span class="menu-text">Responsive Design 2</span>
                 </a>
             </div>
             
             <div class="menu-card">
-                <a href="Tarea 19-03/responsive-design.html">
+                <a href="responsive-design.html">
                     <span class="menu-icon">💻</span>
                     <span class="menu-text" >Responsive Design</span>
                 </a>

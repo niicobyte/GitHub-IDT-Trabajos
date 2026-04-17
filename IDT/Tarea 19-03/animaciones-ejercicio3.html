@@ -61,6 +61,28 @@
             transition: color 0.3s ease;
         }
 
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+            animation-duration: 3s;
+            animation-name: bounce alternate;
+            animation-iteration-count: infinite;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation-play-state: paused;
+        }
+
         @keyframes slidein {
             from {
                 margin-left: 100%;
@@ -85,5 +107,8 @@
     <p><a href="animaciones-ejercicio2.html">Ir al ejercicio anterior</a></p>
     <p id="animacion-bucle">Este es una prueba de animación sencilla. Me gusta mucho es como para un anuncio, o como para poner algo nuevo o ofertas del dia o incluso promociones especiales.</p>
     <p><a href="animaciones-inicio.html">Ir a la página de inicio</a></p>
+    <div style="text-align: center; padding: 20px;">
+        <a href="menu-trabajos.html" class="back-button">⬅ Volver a Menú</a>
+    </div>
 </body>
 </html>
