@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Bootstrap</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../Primer Ejercicio/menu-styles.css">
+</head>
+<body>
+    <!-- Navbar Mejorado -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../Primer Ejercicio/menu-principal.html">🏠 Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../Primer Ejercicio/grilla.html">📚 Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../Primer Ejercicio/fo.html">👤 Cuenta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="page-title mb-3">Productos</h1>
+                    <p class="page-subtitle">Descubre nuestros cursos y servicios disponibles</p>
+                </div>
+            </div>
+            
+            <div class="row" id="productosContainer">
+                <!-- Los productos se cargarán aquí con JavaScript -->
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <button type="button" class="btn btn-primary btn-lg btn-custom" id="btnMostrarMas">➤ Mostrar Más Productos</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2026 Productos Bootstrap. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Base de datos de productos
+        const productos = [
+            {
+                id: 1,
+                nombre: "Curso de JAVA",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fab fa-java",
+                descripcion: "Aprende Java desde cero con ejercicios prácticos y proyectos reales. Domina la programación orientada a objetos...",
+                descripcionCompleta: "JAVA es un lenguaje que nos permitirá introducirnos en el ambiente del software libre utilizando herramientas gratuitas. Este curso te enseñará a programar en Java, desde conceptos básicos hasta programación avanzada con patrones de diseño.",
+                precio: "150.000"
+            },
+            {
+                id: 2,
+                nombre: "Curso de Programación con PHP",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fab fa-php",
+                descripcion: "Domina PHP para crear aplicaciones web dinámicas y escalables. Aprende bases de datos y desarrollo backend...",
+                descripcionCompleta: "Con este curso, serás capaz de adquirir los conocimientos necesarios para desarrollar sitios web que funcionen correctamente. Aprenderás los fundamentos de PHP, conectar con bases de datos y crear aplicaciones web profesionales.",
+                precio: "120.000"
+            },
+            {
+                id: 3,
+                nombre: "Introducción a la Programación",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fas fa-code",
+                descripcion: "Curso intensivo para principiantes. Aprende conceptos fundamentales de programación de forma práctica...",
+                descripcionCompleta: "Muchas veces pensamos en crear nuestros propios programas de computadora, pero no tenemos los conocimientos necesarios. Este taller te enseñará a programar utilizando pseudocódigo y SL2, preparándote para lenguajes más complejos.",
+                precio: "180.000"
+            },
+            {
+                id: 4,
+                nombre: "Curso de Webmaster",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fas fa-globe",
+                descripcion: "Conviértete en Webmaster profesional. Diseño, programación y posicionamiento SEO...",
+                descripcionCompleta: "El curso de Webmaster abarca en forma teórica y práctica cada aspecto del diseño, estructuración, programación y posicionamiento de sitios web profesionales. Aprenderás todo lo necesario para administrar sitios web de nivel empresarial.",
+                precio: "200.000"
+            },
+            {
+                id: 5,
+                nombre: "Curso de HTML5",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fab fa-html5",
+                descripcion: "Domina HTML5, el estándar actual de markup web. Crea páginas web semánticas y accesibles...",
+                descripcionCompleta: "HTML5 es la última versión del lenguaje de marcado que permite crear páginas web modernas y responsivas con todas las características actuales. Aprenderás etiquetas semánticas, formularios avanzados y multimedia.",
+                precio: "100.000"
+            },
+            {
+                id: 6,
+                nombre: "Curso de CSS3",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fab fa-css3-alt",
+                descripcion: "Diseña páginas web atractivas con CSS3. Flexbox, Grid y animaciones modernas...",
+                descripcionCompleta: "Aprende a diseñar y estilizar páginas web con CSS3, la última versión de hojas de estilo en cascada. Domina las técnicas de diseño responsive, Flexbox, CSS Grid y crea animaciones profesionales.",
+                precio: "110.000"
+            },
+            {
+                id: 7,
+                nombre: "Curso de JavaScript",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fab fa-js-square",
+                descripcion: "Crea aplicaciones web interactivas con JavaScript. DOM, eventos, AJAX y ES6...",
+                descripcionCompleta: "JavaScript es el lenguaje de programación que permite agregar interactividad a las páginas web. Aprenderás a crear aplicaciones dinámicas y modernas, manipular el DOM, y trabajar con APIs modernas.",
+                precio: "130.000"
+            },
+            {
+                id: 8,
+                nombre: "Curso de Bootstrap",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fab fa-bootstrap",
+                descripcion: "Desarrollo rápido con Bootstrap. Componentes profesionales y diseño responsive...",
+                descripcionCompleta: "Bootstrap es un framework que facilita el desarrollo de sitios web responsivos y modernos con componentes predefinidos y una grilla flexible. Aprenderás a crear layouts profesionales en minutos.",
+                precio: "140.000"
+            },
+            {
+                id: 9,
+                nombre: "Curso de Base de Datos SQL",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fas fa-database",
+                descripcion: "Domina SQL y diseño de bases de datos. Consultas complejas y optimización...",
+                descripcionCompleta: "Aprende a diseñar y administrar bases de datos relacionales con SQL. Domina los conceptos de normalización, consultas avanzadas, índices y optimización de rendimiento.",
+                precio: "160.000"
+            },
+            {
+                id: 10,
+                nombre: "Curso de React",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fab fa-react",
+                descripcion: "Desarrolla aplicaciones web modernas con React. Hooks, componentes y Redux...",
+                descripcionCompleta: "React es la librería más popular para construir interfaces de usuario interactivas. Aprenderás JSX, hooks, manejo de estado, y cómo construir aplicaciones escalables y performantes.",
+                precio: "170.000"
+            },
+            {
+                id: 11,
+                nombre: "Curso de Vue.js",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fas fa-vuejs",
+                descripcion: "Framework progresivo para construir interfaces. Componentes reactivos y directivas...",
+                descripcionCompleta: "Vue.js es un framework progresivo y flexible para construir interfaces de usuario. Aprenderás sobre componentes, reactividad, enrutamiento y cómo crear aplicaciones web modernas con Vue.",
+                precio: "135.000"
+            },
+            {
+                id: 12,
+                nombre: "Curso de Node.js",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fab fa-node-js",
+                descripcion: "Backend con JavaScript. Express, APIs y servidor web con Node.js...",
+                descripcionCompleta: "Node.js permite ejecutar JavaScript en el servidor. Aprenderás a construir aplicaciones backend escalables, crear APIs REST, manejar autenticación y trabajar con bases de datos.",
+                precio: "155.000"
+            },
+            {
+                id: 13,
+                nombre: "Curso de Python",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fab fa-python",
+                descripcion: "Lenguaje versátil para web, ciencia de datos e IA. Django y Flask...",
+                descripcionCompleta: "Python es un lenguaje versátil ideal para principiantes y profesionales. Aprenderás programación general, desarrollo web con Django y Flask, y fundamentos de ciencia de datos.",
+                precio: "145.000"
+            },
+            {
+                id: 14,
+                nombre: "Curso de Docker",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fab fa-docker",
+                descripcion: "Containerización de aplicaciones. DevOps y deployment con Docker...",
+                descripcionCompleta: "Docker revoluciona la forma de desplegar aplicaciones. Aprenderás sobre contenedores, imágenes, orquestación y cómo usar Docker para facilitar el desarrollo y deployment de tus aplicaciones.",
+                precio: "125.000"
+            },
+            {
+                id: 15,
+                nombre: "Curso de Git y GitHub",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fab fa-git-alt",
+                descripcion: "Control de versiones profesional. Colaboración en proyectos de desarrollo...",
+                descripcionCompleta: "Git es esencial para cualquier desarrollador moderno. Aprenderás control de versiones, trabajo en equipo, flujo de trabajo con ramas y cómo usar GitHub para colaborar en proyectos.",
+                precio: "95.000"
+            },
+            {
+                id: 16,
+                nombre: "Curso de SEO y Posicionamiento",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fas fa-search",
+                descripcion: "Posiciona tu sitio en Google. Estrategias de SEO y marketing digital...",
+                descripcionCompleta: "Aprende técnicas de SEO (Search Engine Optimization) para posicionar tu sitio web en los primeros resultados de Google. Incluye on-page SEO, link building y analítica web.",
+                precio: "115.000"
+            },
+            {
+                id: 17,
+                nombre: "Curso de Diseño UI/UX",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fas fa-pen-nib",
+                descripcion: "Diseña interfaces hermosas y usables. Figma, prototipado y experiencia de usuario...",
+                descripcionCompleta: "Aprende los principios de diseño de interfaces y experiencia de usuario. Trabajarás con Figma, prototipado, y entenderás cómo crear productos digitales que los usuarios amen.",
+                precio: "140.000"
+            },
+            {
+                id: 18,
+                nombre: "Curso Completo Full Stack",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+                icono: "fas fa-layer-group",
+                descripcion: "Conviértete en Full Stack Developer. Front-end, back-end y base de datos completos...",
+                descripcionCompleta: "Aprende a desarrollar aplicaciones web completas desde cero. Incluye HTML, CSS, JavaScript, Node.js, Express, MongoDB y deployment. Todo lo necesario para ser un Full Stack Developer profesional.",
+                precio: "250.000"
+            }
+        ];
+
+        let productosVisibles = 6;
+        const productosPorCarga = 6;
+
+        function renderizarProductos() {
+            const contenedor = document.getElementById('productosContainer');
+            const botón = document.getElementById('btnMostrarMas');
+            
+            contenedor.innerHTML = '';
+            
+            for (let i = 0; i < productosVisibles && i < productos.length; i++) {
+                const producto = productos[i];
+                const productoHTML = `
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}" style="cursor: pointer;" onclick="abrirDetalles(${producto.id})">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="javascript:void(0);" onclick="abrirDetalles(${producto.id})" style="text-decoration: none; color: #0066cc;">
+                                        ${producto.nombre}
+                                    </a>
+                                </h5>
+                                <p class="card-text">${producto.descripcion}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                contenedor.innerHTML += productoHTML;
+            }
+            
+            // Ocultar botón si se muestran todos los productos
+            if (productosVisibles >= productos.length) {
+                botón.style.display = 'none';
+            } else {
+                botón.style.display = 'block';
+            }
+        }
+
+        document.getElementById('btnMostrarMas').addEventListener('click', function() {
+            productosVisibles += productosPorCarga;
+            renderizarProductos();
+        });
+
+        function abrirDetalles(id) {
+            // Guardar el producto en sessionStorage para acceso en la página de detalles
+            const producto = productos.find(p => p.id === id);
+            sessionStorage.setItem('productoSeleccionado', JSON.stringify(producto));
+            window.open('detalle-producto.html', '_blank');
+        }
+
+        // Renderizar productos iniciales
+        renderizarProductos();
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Bootstrap</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../Tercer Ejercicio/menu-styles.css">
+</head>
+<body>
+    <!-- Navbar Mejorado -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Tercer Ejercicio/menu-principal.html">🏠 Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Tercer Ejercicio/cards-targes.html">📚 Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Segundo Ejercicio/formulario.html">👤 Cuenta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="page-title mb-3">Productos</h1>
+                    <p class="page-subtitle">Descubre nuestros cursos y servicios disponibles</p>
+                </div>
+            </div>
+            
+            <div class="row" id="productosContainer">
+                <!-- Los productos se cargarán aquí con JavaScript -->
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <button type="button" class="btn btn-primary btn-lg btn-custom" id="btnMostrarMas">➤ Mostrar Más Productos</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2026 Productos Bootstrap. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Base de datos de productos
+        const productos = [
+            {
+                id: 1,
+                nombre: "Curso de JAVA",
+                imagen: "https://via.placeholder.com/300x200?text=Curso+JAVA",
+                descripcion: "JAVA es un lenguaje que nos permitirá introducirnos en el ambiente del software libre utilizando her...",
+                descripcionCompleta: "JAVA es un lenguaje que nos permitirá introducirnos en el ambiente del software libre utilizando herramientas gratuitas. Este curso te enseñará a programar en Java.",
+                precio: "150.000"
+            },
+            {
+                id: 2,
+                nombre: "Curso de Programación con PHP",
+                imagen: "https://via.placeholder.com/300x200?text=Curso+PHP",
+                descripcion: "Con este curso, serás capaz de adquirir los conocimientos necesarios para desarrollar sitios web que...",
+                descripcionCompleta: "Con este curso, serás capaz de adquirir los conocimientos necesarios para desarrollar sitios web que funcionen correctamente. Aprenderás los fundamentos de PHP.",
+                precio: "120.000"
+            },
+            {
+                id: 3,
+                nombre: "Curso Intensivo de Introducción a la Programación",
+                imagen: "https://via.placeholder.com/300x200?text=Curso+Programacion",
+                descripcion: "Muchas veces pensamos en crear nuestros propios programas de computadora, pero no tenemos los conocimientos...",
+                descripcionCompleta: "Muchas veces pensamos en crear nuestros propios programas de computadora, pero no tenemos los conocimientos necesarios sobre cómo hacerlo o por dónde comenzar. Este taller te enseñará a programar utilizando pseudocódigo o SL2.",
+                precio: "180.000"
+            },
+            {
+                id: 4,
+                nombre: "Curso de Webmaster",
+                imagen: "https://via.placeholder.com/300x200?text=Curso+Webmaster",
+                descripcion: "El curso de Webmaster abarca en forma teórica y práctica cada aspecto del diseño, estructuración, pr...",
+                descripcionCompleta: "El curso de Webmaster abarca en forma teórica y práctica cada aspecto del diseño, estructuración, programación y posicionamiento de sitios web profesionales.",
+                precio: "200.000"
+            },
+            {
+                id: 5,
+                nombre: "Curso de HTML5",
+                imagen: "https://via.placeholder.com/300x200?text=Curso+HTML5",
+                descripcion: "HTML5 es la última versión del lenguaje de marcado que permite crear páginas web modernas...",
+                descripcionCompleta: "HTML5 es la última versión del lenguaje de marcado que permite crear páginas web modernas y responsivas con todas las características actuales.",
+                precio: "100.000"
+            },
+            {
+                id: 6,
+                nombre: "Curso de CSS3",
+                imagen: "https://via.placeholder.com/300x200?text=Curso+CSS3",
+                descripcion: "Aprende a diseñar y estilizar páginas web con CSS3, la última versión de hojas de estilo...",
+                descripcionCompleta: "Aprende a diseñar y estilizar páginas web con CSS3, la última versión de hojas de estilo en cascada. Domina las técnicas de diseño responsive.",
+                precio: "110.000"
+            },
+            {
+                id: 7,
+                nombre: "Curso de JavaScript",
+                imagen: "https://via.placeholder.com/300x200?text=Curso+JavaScript",
+                descripcion: "JavaScript es el lenguaje de programación que permite agregar interactividad a las páginas web...",
+                descripcionCompleta: "JavaScript es el lenguaje de programación que permite agregar interactividad a las páginas web. Aprenderás a crear aplicaciones dinámicas y modernas.",
+                precio: "130.000"
+            },
+            {
+                id: 8,
+                nombre: "Curso de Bootstrap",
+                imagen: "https://via.placeholder.com/300x200?text=Curso+Bootstrap",
+                descripcion: "Bootstrap es un framework que facilita el desarrollo de sitios web responsivos y modernos...",
+                descripcionCompleta: "Bootstrap es un framework que facilita el desarrollo de sitios web responsivos y modernos con componentes predefinidos y una grilla flexible.",
+                precio: "140.000"
+            },
+            {
+                id: 9,
+                nombre: "Curso de Base de Datos",
+                imagen: "https://via.placeholder.com/300x200?text=Curso+BD",
+                descripcion: "Aprende a diseñar y administrar bases de datos relacionales con SQL...",
+                descripcionCompleta: "Aprende a diseñar y administrar bases de datos relacionales con SQL. Domina los conceptos de normalización y consultas avanzadas.",
+                precio: "160.000"
+            }
+        ];
+
+        let productosVisibles = 3;
+        const productosPorCarga = 3;
+
+        function renderizarProductos() {
+            const contenedor = document.getElementById('productosContainer');
+            const botón = document.getElementById('btnMostrarMas');
+            
+            contenedor.innerHTML = '';
+            
+            for (let i = 0; i < productosVisibles && i < productos.length; i++) {
+                const producto = productos[i];
+                const productoHTML = `
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}" style="cursor: pointer;" onclick="abrirDetalles(${producto.id})">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="javascript:void(0);" onclick="abrirDetalles(${producto.id})" style="text-decoration: none; color: #0066cc;">
+                                        ${producto.nombre}
+                                    </a>
+                                </h5>
+                                <p class="card-text">${producto.descripcion}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                contenedor.innerHTML += productoHTML;
+            }
+            
+            // Ocultar botón si se muestran todos los productos
+            if (productosVisibles >= productos.length) {
+                botón.style.display = 'none';
+            } else {
+                botón.style.display = 'block';
+            }
+        }
+
+        document.getElementById('btnMostrarMas').addEventListener('click', function() {
+            productosVisibles += productosPorCarga;
+            renderizarProductos();
+        });
+
+        function abrirDetalles(id) {
+            // Guardar el producto en sessionStorage para acceso en la página de detalles
+            const producto = productos.find(p => p.id === id);
+            sessionStorage.setItem('productoSeleccionado', JSON.stringify(producto));
+            window.open('detalle-producto.html', '_blank');
+        }
+
+        // Renderizar productos iniciales
+        renderizarProductos();
+    </script>
+</body>
+</html>
