@@ -1,11 +1,537 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Migración Bootstrap a Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; }
+        .code-block { background-color: #1e293b; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-size: 0.75rem; }
+        .comparison-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        @media (max-width: 768px) { 
+            .comparison-section { grid-template-columns: 1fr; gap: 1rem; }
+            .code-block { padding: 0.75rem; font-size: 0.65rem; }
+            table { font-size: 0.85rem; }
+            table td, table th { padding: 0.5rem !important; }
+        }
+        @media (max-width: 640px) {
+            .code-block pre { margin: 0; }
+        }
+        .toggle-btn { transition: all 0.3s ease; }
+        .toggle-btn.active { background-color: #16a34a; }
+    </style>
 </head>
-<body>
-    
+<body class="bg-gray-50">
+    <!-- Encabezado Principal -->
+    <div class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-8 sm:py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Migrar de Bootstrap a Tailwind CSS</h1>
+            <p class="text-base sm:text-lg md:text-xl text-blue-100 max-w-2xl">Aprende las diferencias entre Bootstrap y Tailwind CSS, y cómo migrar tus proyectos de una forma eficiente y manteniendo el mismo aspecto visual.</p>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-2 sm:px-4 py-2 sm:py-3 flex gap-1 sm:gap-4 overflow-x-auto flex-wrap">
+            <a href="#objetivos" class="px-2 sm:px-4 py-2 text-xs sm:text-base text-gray-700 hover:text-blue-600 transition font-semibold whitespace-nowrap">Objetivos</a>
+            <a href="#diferencias" class="px-2 sm:px-4 py-2 text-xs sm:text-base text-gray-700 hover:text-blue-600 transition font-semibold whitespace-nowrap">Diferencias</a>
+            <a href="#conversion" class="px-2 sm:px-4 py-2 text-xs sm:text-base text-gray-700 hover:text-blue-600 transition font-semibold whitespace-nowrap">Conversión</a>
+            <a href="#ejercicios" class="px-2 sm:px-4 py-2 text-xs sm:text-base text-gray-700 hover:text-blue-600 transition font-semibold whitespace-nowrap">Ejercicios</a>
+            <a href="#proyecto" class="px-2 sm:px-4 py-2 text-xs sm:text-base text-gray-700 hover:text-blue-600 transition font-semibold whitespace-nowrap">Proyecto</a>
+        </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-3 sm:px-4 py-6 sm:py-12">
+
+        <!-- Objetivos -->
+        <section id="objetivos" class="mb-8 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-8 flex items-center gap-2 sm:gap-3">
+                <span class="bg-blue-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-sm sm:text-base">1</span>
+                Objetivos de la Clase
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-6">
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md border-l-4 border-blue-600">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">✓ Comprender Diferencias</h3>
+                    <p class="text-sm sm:text-base text-gray-700">Entender las diferencias fundamentales entre Bootstrap y Tailwind CSS.</p>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md border-l-4 border-green-600">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">✓ Convertir Estilos</h3>
+                    <p class="text-sm sm:text-base text-gray-700">Convertir estilos de Bootstrap a clases utilitarias de Tailwind.</p>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md border-l-4 border-purple-600">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">✓ Configurar Tailwind</h3>
+                    <p class="text-sm sm:text-base text-gray-700">Configurar tailwind.config.js para personalizar colores y tipografías.</p>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md border-l-4 border-orange-600">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">✓ Migrar Proyecto</h3>
+                    <p class="text-sm sm:text-base text-gray-700">Aplicar los conocimientos migrando un proyecto completo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diferencias Principales -->
+        <section id="diferencias" class="mb-8 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-8 flex items-center gap-2 sm:gap-3">
+                <span class="bg-green-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-sm sm:text-base">2</span>
+                Diferencias Principales
+            </h2>
+            <div class="bg-white rounded-lg shadow-lg overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-blue-900 text-white">
+                        <tr>
+                            <th class="px-3 sm:px-6 py-2 sm:py-4 text-left font-bold text-xs sm:text-base">Bootstrap</th>
+                            <th class="px-3 sm:px-6 py-2 sm:py-4 text-left font-bold text-xs sm:text-base">Tailwind CSS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b hover:bg-blue-50 transition">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">Usa clases predefinidas (ej. <code class="bg-gray-200 px-2 py-1 rounded text-xs">btn-primary</code>, <code class="bg-gray-200 px-2 py-1 rounded text-xs">card</code>)</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">Usa clases utilitarias (<code class="bg-gray-200 px-2 py-1 rounded text-xs">bg-blue-500</code>, <code class="bg-gray-200 px-2 py-1 rounded text-xs">p-4</code>)</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50 transition">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">Depende de archivos CSS externos</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">No necesita un archivo CSS adicional</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50 transition">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">Grid basado en <code class="bg-gray-200 px-2 py-1 rounded text-xs">row</code>, <code class="bg-gray-200 px-2 py-1 rounded text-xs">col-*</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">Grid basado en <code class="bg-gray-200 px-2 py-1 rounded text-xs">grid</code>, <code class="bg-gray-200 px-2 py-1 rounded text-xs">flex</code></td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50 transition">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">Requiere modificar CSS</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">Personalización con <code class="bg-gray-200 px-2 py-1 rounded text-xs">tailwind.config.js</code></td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">Componentes más pesados</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">Más ligero, optimizado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition">
+                            <td class="px-6 py-4 text-gray-700">Componentes más pesados</td>
+                            <td class="px-6 py-4 text-gray-700">Más ligero, optimizado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Conversión de Clases -->
+        <section id="conversion" class="mb-8 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-8 flex items-center gap-2 sm:gap-3">
+                <span class="bg-purple-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-sm sm:text-base">3</span>
+                Conversión de Clases Comunes
+            </h2>
+            <div class="bg-white rounded-lg shadow-lg overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-blue-900 text-white">
+                        <tr>
+                            <th class="px-3 sm:px-6 py-2 sm:py-4 text-left font-bold text-xs sm:text-base">Bootstrap</th>
+                            <th class="px-3 sm:px-6 py-2 sm:py-4 text-left font-bold text-xs sm:text-base">Tailwind</th>
+                            <th class="px-3 sm:px-6 py-2 sm:py-4 text-left font-bold text-xs sm:text-base">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b hover:bg-blue-50 transition">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">container</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">mx-auto px-4</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-600 text-xs sm:text-base">Contenedor</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50 transition">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">row</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">flex flex-wrap</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-600 text-xs sm:text-base">Fila</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50 transition">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">col-md-6</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">md:w-1/2</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-600 text-xs sm:text-base">Columna</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50 transition">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">btn</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">px-4 py-2 rounded</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-600 text-xs sm:text-base">Botón</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50 transition">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">card</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">shadow-lg rounded-lg</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-600 text-xs sm:text-base">Tarjeta</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">text-center</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4"><code class="bg-gray-200 px-2 py-1 rounded text-xs">text-center</code></td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-600 text-xs sm:text-base">Centrar</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Ejercicios -->
+        <section id="ejercicios" class="mb-8 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-8 flex items-center gap-2 sm:gap-3">
+                <span class="bg-orange-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-sm sm:text-base">4</span>
+                Ejercicios Prácticos
+            </h2>
+
+            <!-- Ejercicio 1: Botón -->
+            <div class="bg-white rounded-lg shadow-lg p-4 sm:p-8 mb-6 sm:mb-8">
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Ejercicio 1: Pasar un botón a Tailwind</h3>
+                
+                <div class="comparison-section mb-8">
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-4 text-blue-600">Bootstrap</h4>
+                        <div class="code-block mb-4">
+                            <code class="text-white text-sm" id="codigo-boton-bootstrap">
+&lt;button class="btn btn-primary"&gt;
+    Comprar
+&lt;/button&gt;
+                            </code>
+                        </div>
+                        <div class="p-6 bg-gray-100 rounded-lg text-center">
+                            <button class="btn btn-primary">Comprar</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-4 text-teal-600">Tailwind CSS</h4>
+                        <div class="code-block mb-4">
+                            <code class="text-white text-sm" id="codigo-boton-tailwind">
+&lt;button class="bg-blue-500 text-white px-4 py-2 
+           rounded-md hover:bg-blue-700 transition"&gt;
+    Comprar
+&lt;/button&gt;
+                            </code>
+                        </div>
+                        <div class="p-6 bg-gray-100 rounded-lg text-center">
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejercicio 2: Tarjeta -->
+            <div class="bg-white rounded-lg shadow-lg p-4 sm:p-8">
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Ejercicio 2: Pasar una tarjeta a Tailwind</h3>
+                
+                <div class="comparison-section">
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-4 text-blue-600">Bootstrap</h4>
+                        <div class="code-block mb-4">
+                            <code class="text-white text-sm" id="codigo-card-bootstrap">
+&lt;div class="card"&gt;
+    &lt;img src="..." class="card-img-top" alt="..."&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Título&lt;/h5&gt;
+        &lt;p class="card-text"&gt;Descripción&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                            </code>
+                        </div>
+                        <div class="p-4 bg-gray-100 rounded-lg">
+                            <div class="card" style="width: 100%;">
+                                <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Título</h5>
+                                    <p class="card-text">Descripción</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-4 text-teal-600">Tailwind CSS</h4>
+                        <div class="code-block mb-4">
+                            <code class="text-white text-sm" id="codigo-card-tailwind">
+&lt;div class="bg-white shadow-lg rounded-lg 
+           overflow-hidden max-w-lg"&gt;
+    &lt;img src="..." class="w-full" alt="..."&gt;
+    &lt;div class="p-6"&gt;
+        &lt;h5 class="text-xl font-bold"&gt;Título&lt;/h5&gt;
+        &lt;p class="text-gray-600"&gt;Descripción&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                            </code>
+                        </div>
+                        <div class="p-4 bg-gray-100 rounded-lg">
+                            <div class="bg-white shadow-lg rounded-lg overflow-hidden max-w-lg">
+                                <img src="https://via.placeholder.com/150" class="w-full" alt="...">
+                                <div class="p-6">
+                                    <h5 class="text-xl font-bold">Título</h5>
+                                    <p class="text-gray-600">Descripción</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proyecto Completo -->
+        <section id="proyecto" class="mb-8 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-8 flex items-center gap-2 sm:gap-3">
+                <span class="bg-red-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-sm sm:text-base">5</span>
+                Migración de Interfaz Completa
+            </h2>
+
+            <!-- NavBar -->
+            <div class="bg-white rounded-lg shadow-lg p-4 sm:p-8 mb-6 sm:mb-8">
+                <h3 class="text-lg sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">NavBar</h3>
+                
+                <div class="comparison-section mb-8">
+                    <div>
+                        <h4 class="text-lg font-bold text-blue-600 mb-4">Bootstrap</h4>
+                        <div class="code-block mb-4 text-xs overflow-x-auto">
+                            <pre><code class="text-white">&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+    &lt;a class="navbar-brand" href="#"&gt;Mi Web&lt;/a&gt;
+    &lt;ul class="navbar-nav"&gt;
+        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                <div class="container-fluid">
+                                    <a class="navbar-brand" href="#">Mi Web</a>
+                                    <ul class="navbar-nav ms-auto">
+                                        <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-teal-600 mb-4">Tailwind CSS</h4>
+                        <div class="code-block mb-4 text-xs overflow-x-auto">
+                            <pre><code class="text-white">&lt;nav class="bg-gray-100 p-4 gap-2 flex justify-between items-center"&gt;
+    &lt;a class="text-xl font-bold" href="#"&gt;Mi Web&lt;/a&gt;
+    &lt;ul class="flex space-x-4"&gt;
+        &lt;li&gt;&lt;a class="text-gray-700 hover:text-blue-500" href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class="text-gray-700 hover:text-blue-500" href="#"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class="text-gray-700 hover:text-blue-500" href="#"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <nav class="bg-gray-100 p-4 gap-2 flex justify-between items-center rounded">
+                                <a class="text-xl font-bold" href="#">Mi Web</a>
+                                <ul class="flex space-x-4">
+                                    <li><a class="text-gray-700 hover:text-blue-500 transition" href="#">Inicio</a></li>
+                                    <li><a class="text-gray-700 hover:text-blue-500 transition" href="#">Servicios</a></li>
+                                    <li><a class="text-gray-700 hover:text-blue-500 transition" href="#">Contacto</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Section -->
+            <div class="bg-white rounded-lg shadow-lg p-4 sm:p-8 mb-6 sm:mb-8">
+                <h3 class="text-lg sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Sección Hero</h3>
+                
+                <div class="comparison-section mb-8">
+                    <div>
+                        <h4 class="text-lg font-bold text-blue-600 mb-4">Bootstrap</h4>
+                        <div class="code-block mb-4 text-xs overflow-x-auto">
+                            <pre><code class="text-white">&lt;section class="jumbotron text-center"&gt;
+    &lt;h1&gt;Bienvenidos&lt;/h1&gt;
+    &lt;p&gt;Descubre nuestros servicios&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <section class="jumbotron text-center mb-0">
+                                <h1>Bienvenidos</h1>
+                                <p class="lead">Descubre nuestros servicios</p>
+                            </section>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-teal-600 mb-4">Tailwind CSS</h4>
+                        <div class="code-block mb-4 text-xs overflow-x-auto">
+                            <pre><code class="text-white">&lt;section class="flex flex-col items-center text-center p-10 bg-gray-200"&gt;
+    &lt;h1 class="text-4xl font-bold"&gt;Bienvenidos&lt;/h1&gt;
+    &lt;p class="text-gray-600"&gt;Descubre nuestros servicios&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <section class="flex flex-col items-center text-center p-10 bg-gray-200 rounded">
+                                <h1 class="text-4xl font-bold">Bienvenidos</h1>
+                                <p class="text-gray-600">Descubre nuestros servicios</p>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="bg-white rounded-lg shadow-lg p-4 sm:p-8">
+                <h3 class="text-lg sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Grid de Tarjetas</h3>
+                
+                <div class="comparison-section">
+                    <div>
+                        <h4 class="text-lg font-bold text-blue-600 mb-4">Bootstrap</h4>
+                        <div class="code-block mb-4 text-xs overflow-x-auto">
+                            <pre><code class="text-white">&lt;div class="row g-3"&gt;
+    &lt;div class="col-12 col-md-4"&gt;
+        &lt;div class="card shadow-lg p-3"&gt;
+            &lt;h2 class="fs-4 fw-bold"&gt;Servicio 1&lt;/h2&gt;
+            &lt;p class="text-muted"&gt;Descripción.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    ...
+&lt;/div&gt;</code></pre>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-4">
+                                    <div class="card shadow-lg p-3">
+                                        <h2 class="fs-4 fw-bold">Servicio 1</h2>
+                                        <p class="text-muted">Descripción.</p>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="card shadow-lg p-3">
+                                        <h2 class="fs-4 fw-bold">Servicio 2</h2>
+                                        <p class="text-muted">Descripción.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-teal-600 mb-4">Tailwind CSS</h4>
+                        <div class="code-block mb-4 text-xs overflow-x-auto">
+                            <pre><code class="text-white">&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6"&gt;
+    &lt;div class="bg-white p-6 rounded-lg shadow-lg"&gt;
+        &lt;h2 class="text-xl font-bold"&gt;Servicio 1&lt;/h2&gt;
+        &lt;p class="text-gray-600"&gt;Descripción.&lt;/p&gt;
+    &lt;/div&gt;
+    ...
+&lt;/div&gt;</code></pre>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+                                <div class="bg-white p-6 rounded-lg shadow-lg">
+                                    <h2 class="text-xl font-bold">Servicio 1</h2>
+                                    <p class="text-gray-600">Descripción.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-lg shadow-lg">
+                                    <h2 class="text-xl font-bold">Servicio 2</h2>
+                                    <p class="text-gray-600">Descripción.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-lg shadow-lg">
+                                    <h2 class="text-xl font-bold">Servicio 3</h2>
+                                    <p class="text-gray-600">Descripción.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuración Tailwind -->
+        <section class="mb-8 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-8">Configuración Tailwind</h2>
+            <div class="bg-white rounded-lg shadow-lg p-4 sm:p-8">
+                <p class="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6">Para personalizar Tailwind CSS, edita el archivo <code class="bg-gray-200 px-2 py-1 rounded">tailwind.config.js</code>:</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-4">tailwind.config.js</h4>
+                        <div class="code-block text-sm overflow-x-auto">
+                            <pre><code class="text-white">module.exports = {
+  content: ["./src/**/*.{html,js}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: "#1e3a8a",
+        secondary: "#64748b",
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+}</code></pre>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-4">index.html (con CDN)</h4>
+                        <div class="code-block text-sm overflow-x-auto">
+                            <pre><code class="text-white">&lt;script&gt;
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          clifford: '#da373d',
+        }
+      }
+    }
+  }
+&lt;/script&gt;
+
+&lt;p class="bg-clifford text-white p-2 rounded"&gt;
+  Texto de prueba
+&lt;/p&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg shadow-lg p-12 mb-16">
+            <h2 class="text-3xl font-bold mb-4">¡A migrar tu proyecto!</h2>
+            <p class="text-lg text-blue-100 mb-6">Ahora tienes las herramientas y conocimientos para migrar tu proyecto de Bootstrap a Tailwind CSS. Recuerda:</p>
+            <ul class="space-y-3 text-blue-100">
+                <li>✓ Reemplaza clases predefinidas con clases utilitarias</li>
+                <li>✓ Usa <code class="bg-blue-700 px-2 py-1 rounded">flex</code> y <code class="bg-blue-700 px-2 py-1 rounded">grid</code> para layouts</li>
+                <li>✓ Personaliza con <code class="bg-blue-700 px-2 py-1 rounded">tailwind.config.js</code></li>
+                <li>✓ Aprovecha el CDN para proyectos pequeños</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="mb-2">Migración de Bootstrap a Tailwind CSS - Grupo iDT</p>
+            <p class="text-sm">Aprende a modernizar tus proyectos con frameworks CSS modernos</p>
+        </div>
+    </footer>
+
+    <script>
+        // Highlight.js para código
+        document.querySelectorAll('code').forEach((block) => {
+            if (block.textContent.includes('<')) {
+                block.classList.add('language-html');
+            }
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
