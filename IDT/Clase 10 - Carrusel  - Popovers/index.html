@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Carrusel - Naturaleza</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">🌿 Galería de Naturaleza</span>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&h=400&fit=crop" alt="Montañas" height="400">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Majestuosas Montañas</h5>
+                    <p>Hermosas vistas de las montañas nevadas</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1000&h=400&fit=crop" alt="Bosque" height="400">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Bosque Exuberante</h5>
+                    <p>Naturaleza verde y frondosa</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1000&h=400&fit=crop" alt="Playa" height="400">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Playas Paradisíacas</h5>
+                    <p>Aguas cristalinas y arena blanca</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="popover-section">
+            <button type="button" class="popover-btn" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" 
+                    data-bs-title="📌 Popover Básico" 
+                    data-bs-content="El popover básico es la forma más simple de mostrar contenido adicional. Se activa con data-bs-toggle='popover' y requiere un título con data-bs-title y contenido con data-bs-content.">
+                Popover Básico
+            </button>
+            <button type="button" class="popover-btn" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" 
+                    data-bs-title="✨ Popover Personalizado"
+                    data-bs-content="Los popovers personalizados permiten diferentes triggers (click, hover, focus), múltiples placements (top, bottom, left, right) y estilos CSS personalizados para adaptar la apariencia al diseño.">
+                Popover Personalizado
+            </button>
+            <button type="button" class="popover-btn" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top"
+                    data-bs-title="🎯 Popover Interactivo"
+                    data-bs-content="Los popovers interactivos pueden contener HTML, ser activados mediante JavaScript, tener opciones de cierre, incluir formularios y ejecutar funciones personalizadas al mostrar u ocultar.">
+                Popover Interactivo
+            </button>
+        </div>
+    </div>
+
+    <footer class="text-center text-white mt-5 mb-4">
+        <p>&copy; 2026 Galería de Naturaleza</p>
+    </footer>
+
+    <!-- Scripts necesarios -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <script>
+        // Inicializar todos los popovers con trigger hover
+        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl, {
+                trigger: 'hover focus'
+            })
+        })
+    </script>
+</body>
+</html>

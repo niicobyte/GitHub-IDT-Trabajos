@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS - Guía Completa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-bold mb-4">Tailwind CSS</h1>
+            <p class="text-xl opacity-90">Aprende a crear interfaces modernas con clases utilitarias</p>
+        </div>
+    </header>
+
+    <!-- Objetivos -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Objetivos de la Clase</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-blue-500">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4 flex-shrink-0">1</div>
+                        <h3 class="text-xl font-bold text-gray-900">Filosofía Utility-First</h3>
+                    </div>
+                    <p class="text-gray-700">Comprender la filosofía Utility-First y la diferencia con otros frameworks CSS.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-blue-500">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4 flex-shrink-0">2</div>
+                        <h3 class="text-xl font-bold text-gray-900">Instalación y Configuración</h3>
+                    </div>
+                    <p class="text-gray-700">Aprender a instalar y configurar Tailwind CSS con distintos métodos.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-blue-500">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4 flex-shrink-0">3</div>
+                        <h3 class="text-xl font-bold text-gray-900">Clases Utilitarias</h3>
+                    </div>
+                    <p class="text-gray-700">Explorar las clases utilitarias principales para diseño rápido y flexible.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-blue-500">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4 flex-shrink-0">4</div>
+                        <h3 class="text-xl font-bold text-gray-900">Aplicación Práctica</h3>
+                    </div>
+                    <p class="text-gray-700">Aplicar los conocimientos adquiridos creando un layout básico con Tailwind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conceptos -->
+    <section class="py-16 px-4 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Conceptos Fundamentales</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">¿Qué es Tailwind CSS?</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Es un framework CSS que se basa en <span class="font-bold text-blue-600">clases utilitarias</span> para diseñar interfaces de usuario rápidamente sin escribir CSS personalizado.
+                    </p>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Filosofía Utility-First</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 font-bold mr-3">✓</span>
+                            <span>Usa clases pequeñas y reutilizables</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 font-bold mr-3">✓</span>
+                            <span>Evita la sobreespecificidad</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 font-bold mr-3">✓</span>
+                            <span>Soluciona problemas con la cascada de estilos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 font-bold mr-3">✓</span>
+                            <span>Desarrollo más rápido y eficiente</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Comparación -->
+            <div class="bg-gradient-to-r from-gray-900 to-gray-800 p-8 rounded-lg text-white mb-12">
+                <h3 class="text-2xl font-bold mb-8 text-center">CSS Tradicional vs Tailwind</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-red-400">CSS Tradicional</h4>
+                        <div class="bg-gray-900 p-4 rounded text-sm font-mono overflow-x-auto">
+                            <pre><span class="text-yellow-400">.boton</span> 
+                                {
+                                <span class="text-blue-300">background-color</span>: blue;
+                                <span class="text-blue-300">color</span>: white;
+                                <span class="text-blue-300">padding</span>: 10px 20px;
+                                <span class="text-blue-300">border-radius</span>: 5px;
+                                }
+                            </pre>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-green-400">Tailwind CSS</h4>
+                        <div class="bg-gray-900 p-4 rounded text-sm font-mono overflow-x-auto">
+                            <pre>&lt;<span class="text-red-400">button</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"bg-blue-500 
+  text-white px-4 py-2 
+  rounded-md"</span>&gt;
+  Clic aquí
+&lt;/<span class="text-red-400">button</span>&gt;</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instalación -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Instalación y Configuración</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <!-- Opción 1: CDN -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-yellow-400 px-6 py-4">
+                        <h3 class="text-2xl font-bold text-gray-900">Opción 1: CDN</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 mb-4">La forma más rápida para proyectos pequeños o pruebas.</p>
+                        <div class="bg-gray-900 text-white p-4 rounded text-sm font-mono mb-4 overflow-x-auto">
+                            <pre>&lt;<span class="text-red-400">script</span> <span class="text-orange-400">src</span>=<span class="text-green-400">"https://cdn.tailwindcss.com"</span>&gt;&lt;/<span class="text-red-400">script</span>&gt;</pre>
+                        </div>
+                        <div class="bg-green-50 border-l-4 border-green-500 p-4">
+                            <p class="text-green-700 font-semibold">✓ Ventajas:</p>
+                            <ul class="text-green-700 text-sm mt-2 space-y-1">
+                                <li>• Sin instalación requerida</li>
+                                <li>• Perfecto para prototipos</li>
+                                <li>• Listo para usar inmediatamente</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opción 2: PostCSS -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-yellow-400 px-6 py-4">
+                        <h3 class="text-2xl font-bold text-gray-900">Opción 2: PostCSS</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 mb-4">Configuración profesional para proyectos grandes.</p>
+                        <div class="bg-gray-900 text-white p-4 rounded text-sm font-mono mb-4 overflow-x-auto">
+                            <pre><span class="text-green-400">npm install</span> -D tailwindcss
+<span class="text-green-400">npx tailwindcss init</span></pre>
+                        </div>
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                            <p class="text-blue-700 font-semibold">✓ Ventajas:</p>
+                            <ul class="text-blue-700 text-sm mt-2 space-y-1">
+                                <li>• Personalizable completamente</li>
+                                <li>• Optimizado para producción</li>
+                                <li>• Mejor para proyectos grandes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configuración PostCSS -->
+            <div class="bg-gray-900 text-white p-8 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold mb-6">Configuración PostCSS (tailwind.config.js)</h3>
+                <div class="font-mono text-sm overflow-x-auto">
+                    <pre><span class="text-orange-400">module</span>.exports = {
+  <span class="text-blue-300">content</span>: [<span class="text-green-400">"./src/**/*.{html,js}"</span>],
+  <span class="text-blue-300">theme</span>: {
+    <span class="text-blue-300">extend</span>: {},
+  },
+  <span class="text-blue-300">plugins</span>: [],
+};</pre>
+                </div>
+            </div>
+
+            <!-- Archivo CSS -->
+            <div class="bg-gray-900 text-white p-8 rounded-lg">
+                <h3 class="text-2xl font-bold mb-6">Archivo CSS (style.css)</h3>
+                <div class="font-mono text-sm overflow-x-auto">
+                    <pre><span class="text-blue-400">@tailwind</span> base;
+<span class="text-blue-400">@tailwind</span> components;
+<span class="text-blue-400">@tailwind</span> utilities;</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clases Utilitarias -->
+    <section class="py-16 px-4 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Clases Utilitarias Principales</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Espaciado -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">Espaciado</h3>
+                    <p class="text-blue-800 mb-4">(margin, padding)</p>
+                    <div class="space-y-2 text-sm font-mono">
+                        <div class="bg-white p-2 rounded"><span class="text-blue-600">m-4</span> - margin</div>
+                        <div class="bg-white p-2 rounded"><span class="text-blue-600">p-6</span> - padding</div>
+                        <div class="bg-white p-2 rounded"><span class="text-blue-600">mx-auto</span> - centrar</div>
+                        <div class="bg-white p-2 rounded"><span class="text-blue-600">gap-4</span> - espacios</div>
+                    </div>
+                </div>
+
+                <!-- Tipografía -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-purple-900 mb-4">Tipografía</h3>
+                    <p class="text-purple-800 mb-4">(text, font, leading)</p>
+                    <div class="space-y-2 text-sm font-mono">
+                        <div class="bg-white p-2 rounded"><span class="text-purple-600">text-3xl</span> - tamaño</div>
+                        <div class="bg-white p-2 rounded"><span class="text-purple-600">font-bold</span> - peso</div>
+                        <div class="bg-white p-2 rounded"><span class="text-purple-600">text-center</span> - alineación</div>
+                        <div class="bg-white p-2 rounded"><span class="text-purple-600">leading-relaxed</span> - altura</div>
+                    </div>
+                </div>
+
+                <!-- Colores -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-green-900 mb-4">Colores</h3>
+                    <p class="text-green-800 mb-4">(bg, text, border)</p>
+                    <div class="space-y-2 text-sm font-mono">
+                        <div class="bg-white p-2 rounded"><span class="text-green-600">bg-blue-500</span> - fondo</div>
+                        <div class="bg-white p-2 rounded"><span class="text-green-600">text-white</span> - texto</div>
+                        <div class="bg-white p-2 rounded"><span class="text-green-600">border-gray-300</span> - borde</div>
+                        <div class="bg-white p-2 rounded"><span class="text-green-600">rounded-lg</span> - esquinas</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejemplo de uso -->
+            <div class="mt-12 bg-gray-50 p-8 rounded-lg border-2 border-gray-200">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Ejemplo: Caja con Margen y Padding</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <div class="bg-gray-900 text-white p-4 rounded font-mono text-sm mb-4 overflow-x-auto">
+                            <pre>&lt;<span class="text-red-400">div</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"m-4 p-6 
+  bg-white rounded-lg 
+  shadow-lg"</span>&gt;
+  Caja con margen y padding
+&lt;/<span class="text-red-400">div</span>&gt;</pre>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <div class="m-4 p-6 bg-white rounded-lg shadow-lg border-2 border-blue-200">
+                            <p class="text-gray-700 font-semibold">Caja con margen y padding</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Responsive Design -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Diseño Responsive</h2>
+
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Grid Adaptable: Desktop vs Mobile</h3>
+                <div class="bg-gray-900 text-white p-4 rounded font-mono text-sm mb-6 overflow-x-auto">
+                    <pre>&lt;<span class="text-red-400">div</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"grid grid-cols-1 
+  md:grid-cols-3 gap-4"</span>&gt;
+  &lt;!-- 1 columna en móvil, 3 en desktop --&gt;
+&lt;/<span class="text-red-400">div</span>&gt;</pre>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-blue-500 text-white p-6 rounded-lg text-center font-bold">Sección 1</div>
+                    <div class="bg-blue-500 text-white p-6 rounded-lg text-center font-bold">Sección 2</div>
+                    <div class="bg-blue-500 text-white p-6 rounded-lg text-center font-bold">Sección 3</div>
+                </div>
+                <p class="text-gray-600 text-sm mt-4 text-center">En móvil: 1 columna | En desktop: 3 columnas</p>
+            </div>
+
+            <!-- Puntos de quiebre -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Puntos de Quiebre Responsivos</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <p class="font-bold text-blue-600 mb-2">sm</p>
+                        <p class="text-gray-600 text-sm">640px</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <p class="font-bold text-blue-600 mb-2">md</p>
+                        <p class="text-gray-600 text-sm">768px</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <p class="font-bold text-blue-600 mb-2">lg</p>
+                        <p class="text-gray-600 text-sm">1024px</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <p class="font-bold text-blue-600 mb-2">xl</p>
+                        <p class="text-gray-600 text-sm">1280px</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hover Effects y Animaciones -->
+    <section class="py-16 px-4 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Hover Effects y Animaciones</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Efecto Hover en Botón</h3>
+                    <div class="bg-gray-900 text-white p-4 rounded font-mono text-sm mb-6 overflow-x-auto">
+                        <pre>&lt;<span class="text-red-400">button</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"bg-green-500 
+  text-white px-4 py-2
+  hover:bg-green-700
+  transition"</span>&gt;
+  Comprar
+&lt;/<span class="text-red-400">button</span>&gt;</pre>
+                    </div>
+                    <div class="space-y-4">
+                        <button class="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+                            Comprar
+                        </button>
+                        <p class="text-gray-600 text-sm">Prueba pasar el mouse sobre el botón</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Efecto Hover en Tarjeta</h3>
+                    <div class="bg-gray-900 text-white p-4 rounded font-mono text-sm mb-6 overflow-x-auto">
+                        <pre>&lt;<span class="text-red-400">div</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"hover:shadow-xl
+  hover:scale-105
+  transition"</span>&gt;
+  Contenido
+&lt;/<span class="text-red-400">div</span>&gt;</pre>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl hover:scale-105 transition border-2 border-gray-200">
+                        <h4 class="font-bold text-gray-900 mb-2">Tarjeta Interactiva</h4>
+                        <p class="text-gray-600 text-sm">Prueba pasar el mouse sobre esta tarjeta</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clases de transición -->
+            <div class="mt-12 bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-lg">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Clases de Transición Comunes</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow font-mono text-sm">
+                        <span class="text-purple-600 font-bold">hover:bg-color</span>
+                        <p class="text-gray-600 text-xs mt-2">Cambiar color de fondo</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow font-mono text-sm">
+                        <span class="text-purple-600 font-bold">hover:text-color</span>
+                        <p class="text-gray-600 text-xs mt-2">Cambiar color de texto</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow font-mono text-sm">
+                        <span class="text-purple-600 font-bold">hover:shadow-lg</span>
+                        <p class="text-gray-600 text-xs mt-2">Agregar sombra</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow font-mono text-sm">
+                        <span class="text-purple-600 font-bold">hover:scale-110</span>
+                        <p class="text-gray-600 text-xs mt-2">Aumentar tamaño</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow font-mono text-sm">
+                        <span class="text-purple-600 font-bold">transition</span>
+                        <p class="text-gray-600 text-xs mt-2">Suavizar cambios</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow font-mono text-sm">
+                        <span class="text-purple-600 font-bold">duration-300</span>
+                        <p class="text-gray-600 text-xs mt-2">Velocidad de transición</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ejemplo Completo -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Ejemplo Completo: Página con Tailwind</h2>
+
+            <!-- Vista previa -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+                <div class="bg-blue-600 text-white p-6 text-center font-bold text-2xl">
+                    Mi Página con Tailwind
+                </div>
+                <div class="container mx-auto p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Sección 1</h3>
+                            <p class="text-gray-600">Descripción de la sección.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Sección 2</h3>
+                            <p class="text-gray-600">Descripción de la sección.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Sección 3</h3>
+                            <p class="text-gray-600">Descripción de la sección.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-white text-center p-6 font-bold">
+                    © 2025 - Mi Web Tailwind
+                </div>
+            </div>
+
+            <!-- Código fuente -->
+            <div class="bg-gray-900 text-white p-8 rounded-lg overflow-x-auto">
+                <h3 class="text-2xl font-bold mb-6">Código Fuente</h3>
+                <pre class="font-mono text-sm"><span class="text-red-400">&lt;body</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"bg-gray-100"</span><span class="text-red-400">&gt;</span>
+  <span class="text-red-400">&lt;header</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"bg-blue-600 text-white p-4 text-center text-2xl font-bold"</span><span class="text-red-400">&gt;</span>
+    Mi Página con Tailwind
+  <span class="text-red-400">&lt;/header&gt;</span>
+
+  <span class="text-red-400">&lt;section</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"container mx-auto p-6"</span><span class="text-red-400">&gt;</span>
+    <span class="text-red-400">&lt;div</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"grid grid-cols-1 md:grid-cols-3 gap-6"</span><span class="text-red-400">&gt;</span>
+      <span class="text-red-400">&lt;div</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"bg-white p-6 rounded-lg shadow-lg"</span><span class="text-red-400">&gt;</span>
+        <span class="text-red-400">&lt;h2</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"text-xl font-bold"</span><span class="text-red-400">&gt;</span>Sección 1<span class="text-red-400">&lt;/h2&gt;</span>
+        <span class="text-red-400">&lt;p</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"text-gray-600"</span><span class="text-red-400">&gt;</span>Descripción de la sección.<span class="text-red-400">&lt;/p&gt;</span>
+      <span class="text-red-400">&lt;/div&gt;</span>
+      <span class="text-gray-500">... (repetir para más secciones)</span>
+    <span class="text-red-400">&lt;/div&gt;</span>
+  <span class="text-red-400">&lt;/section&gt;</span>
+
+  <span class="text-red-400">&lt;footer</span> <span class="text-orange-400">class</span>=<span class="text-green-400">"bg-gray-800 text-white text-center p-4"</span><span class="text-red-400">&gt;</span>
+    © 2025 - Mi Web Tailwind
+  <span class="text-red-400">&lt;/footer&gt;</span>
+<span class="text-red-400">&lt;/body&gt;</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparación Visual -->
+    <section class="py-16 px-4 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">¿Por Qué Usar Tailwind?</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Desarrollo Rápido</h3>
+                    <p class="text-gray-600">Crea interfaces en minutos sin escribir CSS personalizado.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Diseño Consistente</h3>
+                    <p class="text-gray-600">Sistema de colores y espaciado predefinido mantiene coherencia.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Responsive por Defecto</h3>
+                    <p class="text-gray-600">Diseño móvil-primero con prefijos de punto de quiebre.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-4xl mb-4">🛠️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Personalizable</h3>
+                    <p class="text-gray-600">Configuración completa de colores, tipografía y más.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-4xl mb-4">📦</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Archivo Optimizado</h3>
+                    <p class="text-gray-600">Solo incluye el CSS que realmente usas en tu proyecto.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-4xl mb-4">🌍</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Comunidad Activa</h3>
+                    <p class="text-gray-600">Amplia comunidad con recursos, plugins y componentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consejos Prácticos -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Consejos Prácticos</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">✓ Empieza con CDN</h3>
+                    <p class="text-blue-800">Usa la versión CDN para aprender y prototipar rápidamente.</p>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">✓ Usa Componentes</h3>
+                    <p class="text-blue-800">Crea componentes reutilizables para mantener tu código limpio.</p>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">✓ Mobile-First</h3>
+                    <p class="text-blue-800">Diseña primero para móvil, luego amplía para pantallas grandes.</p>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">✓ Personaliza el Tema</h3>
+                    <p class="text-blue-800">Configura tu paleta de colores y fuentes en tailwind.config.js.</p>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">✓ Aprende las Clases</h3>
+                    <p class="text-blue-800">Memoriza las clases más comunes para acelerar tu flujo de trabajo.</p>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">✓ Documentación</h3>
+                    <p class="text-blue-800">Consulta la documentación oficial para descubrir nuevas funciones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="container mx-auto text-center">
+            <h3 class="text-2xl font-bold mb-4">¿Listo para Comenzar?</h3>
+            <p class="text-gray-400 mb-8">Tailwind CSS te permite crear hermosos diseños rápidamente.</p>
+            <div class="space-x-4">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transition">
+                    Documentación oficial
+                </button>
+                <button class="bg-gray-700 hover:bg-gray-800 text-white px-8 py-3 rounded-lg font-bold transition">
+                    Explorar ejemplos
+                </button>
+            </div>
+            <p class="text-gray-500 mt-12">© 2026 - Guía Completa de Tailwind CSS</p>
+        </div>
+    </footer>
+</body>
+</html>
