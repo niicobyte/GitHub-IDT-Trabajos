@@ -13,15 +13,22 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3 { font-family: 'Oswald', sans-serif; }
-        .code-block { background-color: #1e293b; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-size: 0.75rem; }
-        .comparison-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        @media (max-width: 768px) { 
+        .code-block { background-color: #1e293b; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-size: 0.75rem; line-height: 1.5; }
+        .comparison-section { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+        .comparison-section > div { min-width: 0; }
+        table { width: 100%; min-width: 100%; border-collapse: collapse; }
+        table code { white-space: normal; }
+        .code-block code { white-space: pre-wrap; word-break: break-word; }
+        .comparison-section .bg-gray-100 { padding: 1rem; }
+        @media (max-width: 768px) {
             .comparison-section { grid-template-columns: 1fr; gap: 1rem; }
-            .code-block { padding: 0.75rem; font-size: 0.65rem; }
+            .code-block { padding: 0.75rem; font-size: 0.7rem; }
+            .comparison-section .bg-gray-100 { padding: 0.75rem; }
             table { font-size: 0.85rem; }
             table td, table th { padding: 0.5rem !important; }
         }
         @media (max-width: 640px) {
+            .code-block { font-size: 0.65rem; padding: 0.65rem; }
             .code-block pre { margin: 0; }
         }
         .toggle-btn { transition: all 0.3s ease; }
@@ -110,15 +117,6 @@
                         <tr class="hover:bg-blue-50 transition">
                             <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">Componentes más pesados</td>
                             <td class="px-3 sm:px-6 py-2 sm:py-4 text-gray-700">Más ligero, optimizado</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-                        </tr>
-                        <tr class="hover:bg-blue-50 transition">
-                            <td class="px-6 py-4 text-gray-700">Componentes más pesados</td>
-                            <td class="px-6 py-4 text-gray-700">Más ligero, optimizado</td>
                         </tr>
                     </tbody>
                 </table>
@@ -316,7 +314,7 @@
                         <div class="code-block mb-4 text-xs overflow-x-auto">
                             <pre><code class="text-white">&lt;nav class="bg-gray-100 p-4 gap-2 flex justify-between items-center"&gt;
     &lt;a class="text-xl font-bold" href="#"&gt;Mi Web&lt;/a&gt;
-    &lt;ul class="flex space-x-4"&gt;
+    &lt;ul class="flex flex-col sm:flex-row sm:space-x-4 gap-2"&gt;
         &lt;li&gt;&lt;a class="text-gray-700 hover:text-blue-500" href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a class="text-gray-700 hover:text-blue-500" href="#"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a class="text-gray-700 hover:text-blue-500" href="#"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
@@ -326,7 +324,7 @@
                         <div class="bg-gray-100 rounded-lg p-4">
                             <nav class="bg-gray-100 p-4 gap-2 flex justify-between items-center rounded">
                                 <a class="text-xl font-bold" href="#">Mi Web</a>
-                                <ul class="flex space-x-4">
+                                <ul class="flex flex-col sm:flex-row sm:space-x-4 gap-2">
                                     <li><a class="text-gray-700 hover:text-blue-500 transition" href="#">Inicio</a></li>
                                     <li><a class="text-gray-700 hover:text-blue-500 transition" href="#">Servicios</a></li>
                                     <li><a class="text-gray-700 hover:text-blue-500 transition" href="#">Contacto</a></li>
@@ -366,9 +364,9 @@
 &lt;/section&gt;</code></pre>
                         </div>
                         <div class="bg-gray-100 rounded-lg p-4">
-                            <section class="flex flex-col items-center text-center p-10 bg-gray-200 rounded">
-                                <h1 class="text-4xl font-bold">Bienvenidos</h1>
-                                <p class="text-gray-600">Descubre nuestros servicios</p>
+                            <section class="flex flex-col items-center text-center p-6 sm:p-10 bg-gray-200 rounded">
+                                <h1 class="text-3xl sm:text-4xl font-bold">Bienvenidos</h1>
+                                <p class="text-gray-600 mt-3">Descubre nuestros servicios</p>
                             </section>
                         </div>
                     </div>
@@ -448,9 +446,9 @@
             <div class="bg-white rounded-lg shadow-lg p-4 sm:p-8">
                 <p class="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6">Para personalizar Tailwind CSS, edita el archivo <code class="bg-gray-200 px-2 py-1 rounded">tailwind.config.js</code>:</p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
                     <div>
-                        <h4 class="text-lg font-bold text-gray-900 mb-4">tailwind.config.js</h4>
+                        <h4 class="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">tailwind.config.js</h4>
                         <div class="code-block text-sm overflow-x-auto">
                             <pre><code class="text-white">module.exports = {
   content: ["./src/**/*.{html,js}"],
@@ -470,7 +468,7 @@
                         </div>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold text-gray-900 mb-4">index.html (con CDN)</h4>
+                        <h4 class="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">index.html (con CDN)</h4>
                         <div class="code-block text-sm overflow-x-auto">
                             <pre><code class="text-white">&lt;script&gt;
   tailwind.config = {
@@ -494,10 +492,10 @@
         </section>
 
         <!-- Conclusión -->
-        <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg shadow-lg p-12 mb-16">
-            <h2 class="text-3xl font-bold mb-4">¡A migrar tu proyecto!</h2>
-            <p class="text-lg text-blue-100 mb-6">Ahora tienes las herramientas y conocimientos para migrar tu proyecto de Bootstrap a Tailwind CSS. Recuerda:</p>
-            <ul class="space-y-3 text-blue-100">
+        <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg shadow-lg p-6 sm:p-12 mb-8 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">¡A migrar tu proyecto!</h2>
+            <p class="text-sm sm:text-lg text-blue-100 mb-4 sm:mb-6">Ahora tienes las herramientas y conocimientos para migrar tu proyecto de Bootstrap a Tailwind CSS. Recuerda:</p>
+            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base text-blue-100">
                 <li>✓ Reemplaza clases predefinidas con clases utilitarias</li>
                 <li>✓ Usa <code class="bg-blue-700 px-2 py-1 rounded">flex</code> y <code class="bg-blue-700 px-2 py-1 rounded">grid</code> para layouts</li>
                 <li>✓ Personaliza con <code class="bg-blue-700 px-2 py-1 rounded">tailwind.config.js</code></li>
@@ -507,10 +505,10 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-8 px-4">
+    <footer class="bg-gray-900 text-gray-400 py-6 sm:py-8 px-4">
         <div class="max-w-6xl mx-auto text-center">
-            <p class="mb-2">Migración de Bootstrap a Tailwind CSS - Grupo iDT</p>
-            <p class="text-sm">Aprende a modernizar tus proyectos con frameworks CSS modernos</p>
+            <p class="mb-1 sm:mb-2 text-sm sm:text-base">Migración de Bootstrap a Tailwind CSS - Grupo iDT</p>
+            <p class="text-xs sm:text-sm">Aprende a modernizar tus proyectos con frameworks CSS modernos</p>
         </div>
     </footer>
 
